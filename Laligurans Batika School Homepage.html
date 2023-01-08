@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width initial-scale=1">
+	<script src="https://kit.fontawesome.com/6a7d884dcf.js" crossorigin="anonymous"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
+	<title>animation</title>
+	<style type="text/css">
+		body {
+			margin: 0;	
+			background-color: #eeeeee;
+		}
+
+		#loadAnimation{
+			position:absolute;
+			background-color:#1c1c1c;
+			height: 100%;
+			width: 100%;
+			z-index: 100;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		#loadAnimation #circle{
+			width:1.5vw;
+			height:1.5vw;
+			background-image: linear-gradient(to left,deepskyblue,#1c1c1c);
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			animation-duration:1s;
+			animation-name: rotate;
+			animation-iteration-count: infinite;
+			animation-direction: linear;
+			animation-timing-function: ease-in-out;
+		}
+		@keyframes rotate {
+			0%{transform:rotate(360deg)}
+			100%{transform:rotate(0deg)}
+		}
+		#loadAnimation #circle::after{
+			content: '';
+			width:1vw;
+			height:1vw;
+			background-color: #1c1c1c;
+			position: absolute;
+			border-radius:50%
+		}
+		#lines{
+			z-index: 20;
+			width: 45px;
+			height: 45px;
+			padding: 1%;
+			justify-content: center;
+			align-items: center;
+			position: fixed;
+			top: 5%;
+			right: 5%;
+			border-radius: 50%;
+			background-color: deepskyblue;
+			color: white;
+			display: none;
+			cursor: pointer;
+			transition: 0.2s;
+			transform: scale(0);
+			font-weight: bold;
+		}
+		#dropbox{
+			display: none;
+			position: fixed;
+			bottom: 0%;
+			right: 0%;
+			height: 100%;
+			width: 0%;
+			background-color: #1c1c1c;	
+			opacity: 0.9;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			z-index: 19;
+			transition: 0.5s;
+			font-size: 0%;
+			transform: scale(0);
+		}
+		#dropbox a{
+			text-align: center;
+			min-width: 30%;
+			color: white;
+			font-family: 'Cabin';
+			margin: 1.5%;
+			opacity: 1;
+			cursor: pointer;
+			display: flex;
+			flex-direction: column;
+		}
+		#dropbox a::after{
+			content: '';
+			transform: scale(0);
+			width: 0%;
+			border: solid 1px deepskyblue;
+			transition: 0.2s;
+		}
+		#dropbox a:hover::after{
+			content: '';
+			transform: scale(1);
+			width: 100%;
+		}
+		#dropbox.dropbox1{
+			width: 100%;
+			font-size: 3.5vw;
+			transform: scale(1);
+		}
+		#box {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: row;
+			transition: 1s;
+			background-color: #000000;
+		}
+		#background{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-image: url(teachers.jpg);
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center;
+			background-attachment: scroll;
+			opacity: 0.4;
+			transition: 1s;
+		}
+		#box:hover #background{
+			opacity: 0.3;
+			/*background-size: 110%;*/
+		}
+		#outerbox {
+			position: relative;
+			width: 400px;
+			height: 400px;
+			margin: auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			transition: 1s;
+			cursor: pointer;
+		}
+
+		#bluebox1{
+			width: 00%;
+			height: 70%;
+			position: absolute;
+			margin: 15% 5%;
+			transform: scale(1) skewX(2deg) skewY(13deg);
+			background-color: darkblue;
+			right: 62%;
+			transition: 1s;
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+		#bluebox2{
+			width: 0%;
+			height: 70%;
+			position: absolute;
+			margin: 15% 5%;
+			left: 61%;
+			transform: scale(1) skewX(-2deg) skewY(-13deg);
+			background-color: darkblue;
+			transition: 1s;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+		#bluebox3{
+			opacity: 0;
+			width: 35%;
+			height: 30%;
+			transform: rotate(47deg) skewY(-27deg) skewX(-25deg);
+			position: absolute;
+			bottom: 5%;
+			background-color: darkblue;
+			left: 33%;
+			transition: 1s;
+			border-bottom-right-radius: 5px;
+		}
+		#redbox1{
+			width: 0%;
+			height: 60%;
+			position: absolute;
+			margin: 15% 6%;
+			bottom: 10%;
+			transform: skewx(2deg);
+			background-color: red;
+			right: 46%;
+			transition: 1s;
+			border-radius: 5px;
+		}
+		#redbox1::after{
+			content: '';
+			position: absolute;
+			bottom: -18%;
+			width: 100%;
+			height: 40%;
+			background-color: red;
+			transform: skewy(20deg);
+			border-radius: 5px;
+		}
+		#redbox2{
+			width: 0%;
+			height: 60%;
+			position: absolute;
+			margin: 15% 6%;
+			bottom: 10%;
+			transform: skewx(-2deg);
+			background-color: red;
+			left: 46%;
+			transition: 1s;
+			border-radius: 5px;
+		}
+		#redbox2::after{
+			content: '';
+			position: absolute;
+			bottom: -18%;
+			width: 100%;
+			height: 40%;
+			background-color: red;
+			transform: skewy(-20deg);
+			border-radius: 5px;
+		}
+		#redbox3{
+			background-color: red;
+			height: 18.5%;
+			width: 20%;
+			position: absolute;
+			bottom: 7%;
+			transform: rotate(46.5deg) skewY(-18deg) skewX(-16deg);
+			left: 40.5%;
+			transition: 1s;
+			opacity: 0;
+			border-bottom-right-radius: 5px;
+		}
+		#yellowbox1{
+			overflow: hidden;
+			width: 20%;
+			height: 90%;
+			background:transparent;
+			position: absolute;
+			bottom: 10%;
+			left: 23%;
+			transform: scale(0);
+			transition: 1s;
+			border-top-left-radius: 5px;
+		}
+		#yellowbox1::after{
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 40%;
+			transform: skewy(30deg);
+			background-color: yellow;
+			bottom: 10%;
+			transition: 1s;
+			border-radius: 5px;
+		}
+		#insideyellow1{
+			width: 200%;
+			height: 40%;
+			border-radius: 50%;
+			position: absolute;
+			right: 0%;
+			background-color: yellow;
+			transition: 1s;
+		}
+		#insideyellow1-1{
+			width: 100%;
+			height: 60%;
+			position: absolute;
+			right: 0%;
+			bottom: 20%;
+			background-color: yellow;
+			transition: 1s;
+		}
+		#yellowbox2{
+			overflow: hidden;
+			width: 20%;
+			height: 90%;
+			background:transparent;
+			position: absolute;
+			bottom: 10%;
+			right: 23%;
+			transform: scale(0);
+			transition: 1s;
+			border-top-right-radius: 5px;
+		}
+		#yellowbox2::after{
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 40%;
+			transform: skewy(-30deg);
+			background-color: yellow;
+			bottom: 10%;
+			transition: 1s;
+			border-radius: 5px;
+		}
+		#insideyellow2{
+			width: 200%;
+			height: 40%;
+			border-radius: 50%;
+			position: absolute;
+			left: 0%;
+			background-color: yellow;
+			transition: 1s;
+		}
+		#insideyellow2-2{
+			width: 100%;
+			height: 60%;
+			position: absolute;
+			right: 0%;
+			bottom: 20%;
+			background-color: yellow;
+			transition: 1s;
+		}
+		#yellowbox3{
+			opacity: 0;
+			width: 10%;
+			height: 30%;
+			background-color: yellow;
+			transform: rotate(20deg);
+			position: absolute;
+			bottom: 10%;
+			left: 46%;
+			transition: 1s;
+			border-bottom-left-radius: 5px;
+		}
+		#yellowbox4{
+			opacity: 0;
+			width: 10%;
+			height: 30%;
+			background-color: yellow;
+			transform: rotate(-20deg);
+			position: absolute;
+			bottom: 10%;
+			right: 45%;
+			transition: 1s;
+			border-bottom-right-radius: 5px;
+		}
+		#whitebox1{
+			width: 9%;
+			height: 10%;
+			background-color: #eeeeee;
+			transform: rotate(45deg);
+			position: absolute;
+			bottom: 11.5%;
+			left: 45.5%;
+		}
+		#whitebox2{
+			height: 70%;
+			width: 10%;
+			background-color: #eeeeee;
+			position: absolute;
+			transform: skewX(2deg);
+			bottom: 16.5%;
+			left: 42.3%;
+		}
+		#whitebox3{
+			height: 70%;
+			width: 10%;
+			background-color: #eeeeee;
+			position: absolute;
+			transform: skewX(-2deg);
+			bottom: 16.5%;
+			right: 42%;
+		}
+		#img{
+			opacity: 0;
+			position: absolute;
+			width: 70%;
+			height: auto;
+			bottom: 20%;
+			transition: 1s;
+		}
+		#laligurans{
+			font-family: 'Algeria';
+			position: absolute;
+			text-transform: uppercase;
+			font-size: 350%;
+			color: #FF3232;
+			top: -30%;
+			width: 0vw;
+			text-align: center;
+			overflow: hidden;
+			transition: 1.5s;
+			text-shadow: 0 0 .5px white;
+		}
+		@font-face {
+			font-family: 'Algeria';
+            font-style: normal;
+            src: local('Algeria'), url('ALGERIA.woff') format('woff');
+		}
+		#date{
+			transform: scale(0);
+			color: darkblue;
+			position: absolute;
+			bottom: 12%;
+			z-index: 1;
+			font-size: 110%;
+			font-weight: bold;
+			font-family: 'Cabin';
+			transition: 1s;
+		}
+		@font-face {
+			font-family: 'LCALLIG';
+            font-style: normal;
+            src: local('LCALLIG'), url('LCALLIG.woff') format('woff');
+		}
+		#moto{
+			position: absolute;
+			bottom: 10%;
+			font-size: 300%;
+			color: #4CFF7C;
+			font-family: 'LCALLIG';
+			bottom: -30%;
+			width: 155%;
+			text-align: center;
+			opacity: 0;
+			transition: 1s;
+			font-weight: bold;
+		}
+
+		#ul {
+			width: 0vw;
+			height: 30vw;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			list-style: none;
+			right: 0%;
+			transition: 1s;
+			transform: scale(0);
+		}
+		#ul a{
+			text-transform: uppercase;
+			font-size: 130%;
+			width: 40%;
+			margin: 1%;
+			padding: 1% 0%;
+			font-family: 'Comfortaa';
+			cursor: pointer;
+			font-weight: 2000;
+			color: white;
+			letter-spacing: 2px;
+			position: relative;
+			transition: 0.2s;
+			display: flex;
+			flex-direction: column;
+		}
+		#ul a:hover{
+			color: deepskyblue;
+		}
+		#ul a::after{
+			content: '';
+			border-bottom: solid 2px deepskyblue;
+			width: 0%;
+			transition: 0.2s;
+			margin: 1%;
+		}
+		#ul a:hover::after{
+			content: '';
+			width: 100%;
+		}
+		/*#header {
+			overflow: hidden;
+			transform: scale(0);
+			position: sticky;
+			top: 0px;
+			max-width: 100%;
+			display: flex;
+			flex-direction: row;
+			background-color: #E5E5FF;			
+			transition: 0.2s;
+			z-index: 5;
+			box-shadow: 0 1px 5px;
+		}
+		#header a{
+			text-align: center;
+			margin: 0% 1%;
+			right: 1%;
+			max-width: 15vw;
+			font-size: 100%;
+			font-family: 'Cabin';
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+	        cursor: pointer;
+	        text-transform: uppercase;
+	        transition: 0.2s;
+	        color: black;
+		}
+		#header a::after{
+			content: '';
+			border: solid 1px deepskyblue;
+			width: 0;
+			transform:scale(0);
+			transition: 0.2s;
+		}
+		#header a:hover::after{
+			width: 100%;
+			transform: scale(1);
+		}
+		#header a:hover{
+			color: deepskyblue;
+		}*/
+		#writtencontent{
+			display: none;
+			transition: 0.2s;
+			margin-bottom: 5%;
+			padding-bottom: 5%;
+			padding-top:5%;
+			transform: scale(0);
+			width: 0;
+			transition: 1s;
+			margin: auto;
+			height: 350px;
+			align-items: center;
+			justify-content: center;
+		}
+		#writtencontent::after{
+			content: '';
+			border: solid black 1.3px;
+			width: 80%;
+			margin: 0% 10%;
+			position: absolute;
+			background-color: black;
+		}
+		#writtencontent #heading{
+			color: #000000;
+			font-size: 200%;
+			padding-top: 0%;
+			text-align: center;
+			font-family: 'Cabin';
+			font-weight: bold;
+			overflow: hidden;
+			width: 0;
+			transition: 1s;
+			transition-delay: 1s;
+		}
+		#writtencontent::before{
+			content: '';
+			border: solid black 1px;
+			width: 80%;
+			margin: 0% 10%;
+			position: absolute;
+			background-color: black;
+		}
+		#writtencontent #text{
+			font-size: 150%;
+			font-family: 'Cabin';
+			margin: 0% 10%;
+			line-height: 140%;
+			letter-spacing: .5px;
+			color: #1c1c1c;
+			height: 0;
+			overflow: hidden;
+			transition: 1s;
+			transition-delay:2s
+		}
+		#writtencontent1{
+			display: none;
+			background-color: #ff6b6c;
+			padding: 5% 10% calc(100% - 90vw) 10%;
+			grid-auto-flow: row;
+			transition: 0.2s;
+			transform: scale(0);
+			clip-path: polygon(0 calc(0% + 5vw),100% 0,100% 100%,0 calc(100% - 5vw));
+		}
+		#writtencontent1 #row1,#writtencontent1 #row2,#writtencontent1 #row3{
+			display: grid;
+			grid-auto-flow: column;
+			grid-gap: 5%;
+		}
+		#writtencontent1 #WCU{
+			font-size: 200%;text-align: center;font-weight: bold;font-family: 'Cabin';color:#000000;
+		}
+		#writtencontent1 .heading{
+			font-size: 150%;font-family: "Cabin";font-weight: bold;color: #111111;
+		}
+		#writtencontent1 .text{
+			font-size: 120%;color:#222222;font-family: 'Cabin';
+		}
+		#writtencontent2{
+			display: grid;
+			grid-template-columns: repeat(3,1fr);
+			grid-column-gap: 15px;
+			grid-row-gap: 16px;
+			padding: 1% 15%;
+			transform: scale(0);
+			transition: 0.2s;
+		}
+		#writtencontent2 .boxes{
+			position: relative;
+			text-align: left;
+			padding: 5%;
+			font-weight: bold;
+			font-size: 120%;
+			font-family: 'Cabin';
+			color: #2c2c2c;
+			box-shadow: 0 0 2px black;
+			cursor: pointer;
+		}
+		#writtencontent2 .boxes::before{
+			content: '';
+			border-left: solid deepskyblue;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			height: 0%;
+			transition: 0.2s;
+		}
+		#writtencontent2 .boxes:hover::before{
+			height: 100%;
+		}
+		#writtencontent2 .boxes::after{
+			content: '';
+			border-top: solid deepskyblue;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 	0%;
+			transition: 0.2s;
+		}
+		#writtencontent2 .boxes:hover::after{
+			width: 100%;
+		}
+		footer{
+			color: #dddddd;
+			background-color: #1c1c1c;
+			margin: 0;
+			padding: calc(100% - 90vw) 20% 1% 20%;
+			font-size: 110%;
+			font-family: 'Cabin';
+			display: none;
+			clip-path: polygon(0 calc(0% + 5vw),100% 0,100% 100%,0 100%);
+		}
+		#footer{
+			display: grid;
+			grid-auto-flow: column;
+		}
+		#address #contactus{
+			font-size: 120%;
+			color: #ffffff;
+		}
+		#address #contactus::before{
+			content: '';
+			border-left: solid deepskyblue;
+			padding-right: 1%;
+		}
+		#socialmedia #finduson{
+			font-size: 120%;
+			font-weight: bold;
+			text-transform: uppercase;
+			color: white;
+		}
+		#socialmedia #finduson::before{
+			content: '';
+			border-left: solid deepskyblue;
+			padding-right: 2%;
+		}
+		#socialmedia i{
+			text-decoration: none;
+			color: #eeeeee;
+			font-size: 150%;
+			padding-right: 10%;
+			cursor: pointer;
+		}
+		#socialmedia i:hover{
+			color: deepskyblue;
+		}
+		#contactform #sendusreview{
+			text-transform: uppercase;
+			font-size: 120%;
+			font-weight: bold;
+			color: white;
+		}
+		#contactform #sendusreview::before{
+			content: '';
+			border-left: solid deepskyblue;
+			padding-right: 2%;
+		}
+		#contactform input,textarea{
+			width: 75%;
+			padding: 2%;
+			background-color: transparent;
+			border: none;
+			border-bottom: solid 1px deepskyblue;
+			resize: none;
+			outline: none;
+			transition: 0.2s;
+			color: #eeeeee;
+		}
+		#contactform input:focus,textarea:focus {
+      border-bottom: solid 3px deepskyblue;
+      cursor: text;
+		}
+		#contactform button{
+			padding: 2% 5%;
+			font-family: 'Comfortaa';
+			font-size: 100%;
+			background-color: transparent;
+			color: white;
+			font-weight: bold;
+			border: solid 2px deepskyblue;
+			cursor: pointer;
+			border-radius: 20px;
+			transition: 0.2s;
+		}
+		#contactform button:hover{
+			background-color: deepskyblue;
+			color: black;
+		}
+		footer #copyright{
+			text-align: center;font-family: 'Comfortaa';font-weight: bold;font-size: 20px;
+		}
+		@media screen and (max-width: 1515px){
+			#ul li{
+				width: 50%;
+			}
+		}
+		@media screen and (max-width: 1273px){
+			#ul li{
+				width: 80%;
+			}
+		}
+		@media screen and (max-width: 1173px){
+			#header a{
+				font-size: 80%;
+			}
+		}
+		@media screen and (max-width: 1134px){
+			#header{
+				display: none;
+			}
+			#ul{
+				display: none;
+			}
+			#lines{
+				display: flex;
+			}
+			#dropbox{
+				display: flex;
+			}
+			#writtencontent1{
+				padding: 5% 2% calc(100% - 90vw) 2%;
+			}
+			#writtencontent2{
+				padding: 2%;
+			}
+			footer{
+				padding: calc(100% - 90vw) 5% 1% 5%;
+			}
+		}
+		@media screen and (max-width: 1000px){
+			#outerbox{
+				width: 300px;
+				height: 300px;
+			}
+			#laligurans{
+				font-size: 150%;
+			}
+			#moto{
+				font-size: 100%;
+			}
+			#writtencontent #heading{
+				font-size: 150%;
+			}
+			#writtencontent #text{
+				font-size: 100%;
+				margin: 2%;
+			}
+			#writtencontent1 #row1,#writtencontent1 #row2,#writtencontent1 #row3{
+			display: grid;
+			grid-auto-flow: row;
+			grid-gap: 0%;
+		    }
+		    #writtencontent1 #WCU{
+			font-size: 150%;text-align: center;font-weight: bold;font-family: 'Cabin';color:white;
+		}
+		#writtencontent1 .heading{
+			font-size: 120%;font-family: "Cabin";font-weight: bold;color: #eeeeee;
+		}
+		#writtencontent1 .text{
+			font-size: 120%;color:#dddddd;font-family: 'Cabin';
+		}
+		#writtencontent2{
+			display: grid;
+			grid-template-columns: repeat(1, 1fr);
+		}
+		#footer{
+			grid-auto-flow: row;
+			grid-gap: 5%;
+		}
+		footer #copyright{
+			font-size: 15px;
+		}
+		/*#address #contactus{
+			font-size: 100%;
+			color: #ffffff;
+		}
+		#socialmedia #finduson{
+			font-size: 100%;
+			font-weight: bold;
+			text-transform: uppercase;
+			color: white;
+		}*/
+		}
+		@media screen and (max-width: 670px){
+			#outerbox{
+				width: 200px;
+				height: 200px;
+			}
+		}
+		@media screen and (min-width: 1134px){
+			#dropbox{
+				display: none;
+			}
+		}
+	</style>
+</head>
+<body onload="onload()">
+	<div id="loadAnimation">
+		<span id="circle"></span>
+	</div>
+	<div id="box">
+		<div id="background"></div>
+	  <div id="outerbox">	
+	  	<div id="bluebox1">
+	  	</div>
+	  	<div id="bluebox2">
+	  	</div>
+	  	<div id="bluebox3">
+	  	</div>
+	  	<div id="redbox1">
+	  	</div>
+	  	<div id="redbox2">
+	  	</div>
+	  	<div id="redbox3">
+	  	</div>
+	  	<div id="yellowbox1">
+	  		<div id="insideyellow1"></div>
+	  		<div id="insideyellow1-1"></div>
+	  	</div>
+	  	<div id="yellowbox2">
+	  		<div id="insideyellow2"></div>
+	  		<div id="insideyellow2-2"></div>
+	  	</div>
+	  	<div id="yellowbox3">
+	  	</div>
+	  	<div id="yellowbox4">
+	  	</div>
+	  	<div id="whitebox1"></div>
+	  	<div id="whitebox2"></div>
+	  	<div id="whitebox3"></div>
+	  	<img id="img" src="laligurans.png">
+	  	<p id="laligurans">laligurans</p>
+	  	<p id="date">2036</p>
+	  	<p id="moto"><i>In Pursuit Of Excellence</i></p>
+	  </div>
+	  <div id="list">
+	  	<ul id="ul">
+	  		<a href="about.html" style="text-decoration: none;">about</a>
+	  		<a href="facility.html" style="text-decoration: none;">facility</a>
+	  		<a href="gallery.html" style="text-decoration: none;">gallery</a>
+	  		<a href="academics.html" style="text-decoration: none;">academics</a>
+	  		<a href="newsandevents.html" style="text-decoration: none;">news and events</a>
+	  		<a href="admissionform.html" style="text-decoration: none;">admission form</a>
+	  		<a href="contact.html" style="text-decoration: none;">contact us</a>
+	  	</ul>
+	  </div>
+    </div>
+    <!--<div id="header">
+    	<img src="logo.png" style="width: 15vw;height:100%;cursor: pointer;margin: 1%;margin-right: 10%;">
+    	<a href="about.html" style="text-decoration: none;">About</a>
+    	<a href="facility.html" style="text-decoration: none;">Facility</a>
+    	<a href="gallery.html" style="text-decoration: none;">Gallery</a>
+    	<a href="academics.html" style="text-decoration: none;">Academics</a>
+    	<a href="newsandevents.html" style="text-decoration: none;">News and Events</a>
+    	<a href="admissionform.html" style="text-decoration: none;">Admission Form</a>
+    	<a href="contact.html" style="text-decoration: none;">Contact Us</a>
+	</div>-->
+	<div id="lines" onclick="document.getElementById('dropbox').classList.toggle('dropbox1');/*document.getElementById('dropbox').style.fontSize = '0%';*/"><i class="fas fa-bars" style="font-size: 200%;margin: auto;"></i></div>
+	<div id="dropbox">
+		<a href="about.html" style="text-decoration: none;">About</a>
+    	<a href="facility.html" style="text-decoration: none;">Facility</a>
+    	<a href="gallery.html" style="text-decoration: none;">Gallery</a>
+    	<a href="academics.html" style="text-decoration: none;">Academics</a>
+    	<a href="newsandevents.html" style="text-decoration: none;">News and Events</a>
+    	<a href="admissionform.html" style="text-decoration: none;">Admission Form</a>
+    	<a href="contact.html" style="text-decoration: none;">Contact Us</a>
+	</div>
+	<div id="writtencontent">
+		<p id="heading">Welcome To Laligurans</p>
+		<p id="text">Dear Scholarly members and guardians, It gives us immense pleasure to welcome you to Laligurans Batika Secondary School accepting the fact that this foundation is ofcourse the joint and supportive effort of all of us. We never keep the false words that our all product shall be the Doctors, Pilots, Engineers and so on but we assure you that they will be the ideal citizens of the nation who will be capable of understanding this soil, be rational and innovative enough to solve their problems themselves. We strongly believe that this institution will be a choice since it provides a rich theoretical academic learning along with practical knowledge</p>
+	</div>
+	<div id="writtencontent1">
+		<p id="WCU">Why Choose Us?</p>
+	<div id="row1">
+		<div class="box1"><p class="heading">Easily Accessible Location</p>
+		<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur.</p></div>
+
+		<div class="box1"><p class="heading">Culture Of Excellence</p>
+		<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur.</p></div>
+		<div class="box1"><p class="heading">Diverse Methodology</p>
+
+		<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur.</p></div>
+
+	</div>
+	<div id="row2">
+		<div class="box1"><p class="heading">Educational Councelling</p>
+		<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur.</p></div>
+
+		<div class="box1"><p class="heading">Walking Around Monitoring</p>
+		<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur.</p></div>
+
+		<div class="box1"><p class="heading">Diligent Facility</p>
+		<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur.</p></div>
+
+	</div>
+	<div id="row3">
+		<div class="box1"><p class="heading">Value Based Learning</p>
+		<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur.</p></div>
+
+		<div class="box1"><p class="heading">Output Oriented Assignments</p>
+		<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur.</p></div>
+
+		<div class="box1"><p class="heading">Frequent Exam & Internal Evaluation</p>
+		<p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur.</p></div>
+
+	</div>
+</div><bR><br>
+
+<p style="font-size: 200%;text-align: center;font-weight: bold;font-family: 'Cabin';color:#000000;">News and Events</p>
+<div id="writtencontent2">
+	<div class="boxes">विद्यार्थीको कलम | तीतो सत्य</div>
+	<div class="boxes">कोरोना महामारीको युद्ध जितेको चीन भ्रमण गरेका नेपाली विद्यार्थीको अनुभव</div>
+	<div class="boxes">विद्यार्थीको कलम | म कविता लेखिरहेछु</div>
+	<div class="boxes">Laligurans School donated 1 lakh and 4 thousand amount to Dhurmus Suntali Foundation</div>
+	<div class="boxes">Laligurans School shows Solidarity with China to fight against Corona Virus</div>
+	<div class="boxes">Laligurans School celebrated 14<sup>th</sup> Annual Parent’s day</div>
+</div><br><br><br>
+<footer>
+	<div id="footer">
+		<div id="address"><p id="contactus"><b>CONTACT US</b></p><br><div style="cursor:pointer;"><a href="https://www.google.com.np/maps/place/Laligurans+Batika+School/@27.6685537,85.3476242,17z/data=!3m1!4b1!4m5!3m4!1s0x39eb19f9807e234f:0xab7b3eaf6f7d51d0!8m2!3d27.6685106!4d85.3498001?hl=en" target="_blank" style="text-decoration:none;color: #dddddd;"><i class="fas fa-map-marker-alt"> </i> Narephant, Koteshwor, Kathmandu</a></div><br><div style="cursor: pointer;"><a href="tel:015149347" style="text-decoration:none;color: #dddddd;"><i class="fas fa-phone"> </i> 01-5149347</a></div><br><div style="cursor: pointer;"><a href="mailto:laliguransbatika2072@gmail.com" style="text-decoration: none;color:#dddddd"><i class="fas fa-envelope"> </i> laliguransbatika2072@gmail.com</a></div></div>
+		<div id="socialmedia"><p id="finduson">Find Us On</p><br><a href="https://www.facebook.com/LaliguransBatikaSchool" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/explore/locations/648119518/laligurans-batika-school/" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://www.youtube.com/channel/UCuOFDxLrirtvKW2ftTbnCpg" target="_blank"><i class="fab fa-youtube"></i></a></div>
+		<div id="contactform"><p id="sendusreview"><b>Send Us Review</b><br><br>
+			<form>
+				<input type="text" name="fullname" id="fullname" placeholder="Full Name" autocomplete="off"><br><br>
+				<input type="text" name="email" id="email" placeholder="Email" autocomplete="off"><br><br>
+				<textarea type="text" name="review" id="review" placeholder="Review" autocomplete="off" rows="7"></textarea><Br><br>
+				<button href="#footer" onclick="
+				let name = document.getElementById('fullname').value;
+				let email = document.getElementById('email').value;
+				let review = document.getElementById('review').value;
+			    if (name.length > 0 && email.length > 0 && review.length > 0){
+			    	alert('Thank You for the rewiew.');
+			    }
+			    else{
+			    	alert('Please fill up all the information. Thank you.');
+
+			    }
+				">Send</button>
+			</form>
+		</div>
+	</div><br><br><br><br>
+	<p id="copyright">Copyright&copy; | Laligurans Batika School</p>
+</footer>
+</body>
+<script type="text/javascript">
+function onload(){
+	document.getElementById("loadAnimation").style.display = "none";
+};	
+location.hash = "home";
+	window.setTimeout(function(){
+		document.getElementById("img").style.opacity = "1";
+	},200)
+	window.setTimeout(function(){
+		document.getElementById("yellowbox1").style.transform = "scale(1) skewX(2deg)";
+		document.getElementById("yellowbox2").style.transform = "scale(1) skewX(-2deg)";
+	},400)
+	window.setTimeout(function(){
+		document.getElementById("yellowbox3").style.opacity = "1";
+		document.getElementById("yellowbox4").style.opacity = "1";
+	},800)
+	window.setTimeout(function(){
+		document.getElementById("redbox1").style.width = "30%";
+		document.getElementById("redbox2").style.width = "30%";
+		document.getElementById("redbox3").style.opacity = "1";
+	},1100)
+	window.setTimeout(function(){
+		document.getElementById("bluebox1").style.width = "30%";
+		document.getElementById("bluebox2").style.width = "30%";
+	},2000)
+	window.setTimeout(function(){
+		document.getElementById("bluebox3").style.opacity = "1";
+	},2300)
+	window.setTimeout(function(){
+		document.getElementById("date").style.transform = "scale(1)";
+		document.getElementById("laligurans").style.width = "100%";
+	},2300)
+	window.setTimeout(function(){
+		document.getElementById("moto").style.opacity = "1";
+	},2500)
+	window.setTimeout(function(){
+		document.getElementById("ul").style.width = "40vw";
+		document.getElementById("outerbox").style.width = "200px";
+		document.getElementById("outerbox").style.height = "200px";
+		document.getElementById("laligurans").style.fontSize = "200%";
+		document.getElementById("date").style.fontSize = "0.6vw";
+		document.getElementById("moto").style.fontSize = "150%";
+		document.getElementById("ul").style.transform = "scale(1)";
+		document.getElementById("box").style.height = "810px";
+	},3500)
+
+	window.setTimeout(function(){
+		document.getElementById("writtencontent").style.display = "block";
+		location.hash = "home";
+	},4950)
+
+
+	window.setTimeout(function(){
+		document.getElementById("box").style.position = "relative";
+		document.getElementById("writtencontent").style.transform = "scale(1)";
+		document.getElementById("writtencontent1").style.transform = "scale(1)";
+		document.getElementById("writtencontent1").style.display = "grid";
+		document.getElementById("lines").style.transform = "scale(1)";
+		document.getElementById("writtencontent2").style.transform = "scale(1)";
+		document.querySelector("footer").style.display = "block";
+	},5000)
+
+	if (location.hash == "#home"){
+		document.getElementById("ul").style.width = "40vw";
+		document.getElementById("outerbox").style.width = "200px";
+		document.getElementById("outerbox").style.height = "200px";
+		document.getElementById("laligurans").style.fontSize = "200%";
+		document.getElementById("date").style.fontSize = "0.6vw";
+		document.getElementById("moto").style.fontSize = "150%";
+		document.getElementById("ul").style.transform = "scale(1)";
+		document.getElementById("box").style.height = "810px";
+		document.getElementById("box").style.position = "relative";
+		document.getElementById("writtencontent").style.transform = "scale(1)";
+		document.getElementById("lines").style.transform = "scale(1)";
+		document.getElementById("writtencontent").style.display = "block";
+		document.getElementById("writtencontent1").style.display = "grid";
+		document.getElementById("writtencontent1").style.transform = "scale(1)";
+		document.getElementById("writtencontent2").style.transform = "scale(1)";
+		document.querySelector("footer").style.display = "block";
+	}
+
+	window.onscroll = function(){scroll()}
+
+	function scroll(){
+		/*if (document.documentElement.scrollTop > 500){
+			document.getElementById("header").style.height = "auto";
+			document.getElementById("header").style.transform = "scale(1)";
+		}
+		else {
+			document.getElementById("header").style.height = "0%";
+			document.getElementById("header").style.transform = "scale(0)";
+		}*/
+		if (document.documentElement.scrollTop > 450){
+			document.getElementById("lines").style.color = "black";
+		}
+		else {
+			document.getElementById("lines").style.color = "white";
+		}
+		//if (document.documentElement.scrollTop > 0){
+			//document.documentElement.scrollTop = 810;
+		//}
+		//else {
+		//	document.querySelector("body").style.backgroundColor = "#5b5f97"
+		//}
+		if (document.documentElement.scrollTop > 445){
+			document.getElementById("writtencontent").style.width = "100%";
+			document.getElementById("heading").style.width = "100%";
+			document.getElementById("text").style.height = "70%";
+			document.getElementById("heading").style.paddingTop = "2%";	
+		}
+		console.log(document.documentElement.scrollTop);
+		console.log(document.getElementById("writtencontent").scrollTop);
+	}
+
+</script>
+</html>
